@@ -30,3 +30,12 @@ export interface ImageWidget extends WidgetBase {
 }
 
 export type Widget = TextWidget | LinkWidget | ImageWidget;
+
+export type TextWidgetUpdate = Partial<Omit<TextWidget, "id" | "type">>;
+export type LinkWidgetUpdate = Partial<Omit<LinkWidget, "id" | "type">>;
+export type ImageWidgetUpdate = Partial<Omit<ImageWidget, "id" | "type">>;
+
+export type WidgetUpdate =
+  | TextWidgetUpdate
+  | LinkWidgetUpdate
+  | ImageWidgetUpdate;

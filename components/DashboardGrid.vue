@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { GridStack, type GridItemHTMLElement } from "gridstack";
+import type { WidgetUpdate } from "~/types/widget";
 
 const gridEl = ref<HTMLDivElement | null>(null);
 let grid: GridStack | null = null;
@@ -16,6 +17,10 @@ const syncStoreFromElement = (el?: GridItemHTMLElement | null) => {
     width: node.w,
     height: node.h,
   });
+};
+
+const updateWidget = (id: string, updatedFields: WidgetUpdate) => {
+  store.updateWidget(id, updatedFields);
 };
 
 const syncGridFromStore = async () => {
@@ -121,7 +126,10 @@ watch(
       :gs-h="widget.height"
     >
       <div class="grid-stack-item-content">
-        <Widget :widget="widget" />
+        <Widget
+          :widget="widget"
+          @update:widget="updateWidget(widget.id, $event)"
+        />
       </div>
     </div>
   </div>

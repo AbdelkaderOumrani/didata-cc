@@ -1,5 +1,10 @@
 import { defineStore } from "pinia";
-import { WidgetType, type Widget, type WidgetBase } from "~/types/widget";
+import {
+  WidgetType,
+  type Widget,
+  type WidgetBase,
+  type WidgetUpdate,
+} from "~/types/widget";
 
 export const useGridStore = defineStore("grid", () => {
   const widgets = ref<Widget[]>([]);
@@ -15,7 +20,7 @@ export const useGridStore = defineStore("grid", () => {
       x: 0,
       y: 0,
       width: 4,
-      height: 2,
+      height: 1,
     };
     switch (widgetType) {
       case WidgetType.TEXT:
@@ -44,10 +49,7 @@ export const useGridStore = defineStore("grid", () => {
     }
   };
 
-  const updateWidget = (
-    id: string,
-    data: Partial<Omit<Widget, "id" | "type">>,
-  ) => {
+  const updateWidget = (id: string, data: WidgetUpdate) => {
     const index = widgets.value.findIndex((w) => w.id === id);
     if (index === -1) return;
     history.value.push([...widgets.value]);
