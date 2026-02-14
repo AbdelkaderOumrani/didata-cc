@@ -23,6 +23,7 @@ const updateWidget = (updatedFields: WidgetUpdate) => {
   <LinkWidget
     v-else-if="props.widget.type === WidgetType.LINK"
     :widget="props.widget"
+    @update:widget="updateWidget"
   />
   <ImageWidget
     v-else-if="props.widget.type === WidgetType.IMAGE"

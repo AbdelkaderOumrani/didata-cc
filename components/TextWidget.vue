@@ -32,25 +32,20 @@ const cancel = () => {
     <div class="flex justify-end gap-1">
       <button
         v-if="isEditing"
-        class="btn btn-soft btn-error btn-xs action-btn"
-        style="right: 3.5rem"
+        class="btn btn-soft btn-error btn-xs"
         @click="cancel"
       >
         Cancel
       </button>
       <button
         v-if="isEditing"
-        class="btn btn-soft btn-xs action-btn"
+        class="btn btn-soft btn-xs"
         @click="save"
         :disabled="!content.trim()"
       >
         Save
       </button>
-      <button
-        v-if="!isEditing"
-        class="btn btn-soft btn-xs action-btn"
-        @click="edit"
-      >
+      <button v-if="!isEditing" class="btn btn-soft btn-xs" @click="edit">
         Edit
       </button>
     </div>
