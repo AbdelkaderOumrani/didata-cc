@@ -1,0 +1,1 @@
+<template>Image Widget</template>

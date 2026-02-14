@@ -1,2 +1,8 @@
 @import "tailwindcss";
-@plugin "flyonui";
+@plugin "flyonui" {
+  themes: light --default;
+}
+
+.btn-plus::before {
+  @apply content-['+'] text-lg;
+}

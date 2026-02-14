@@ -6,7 +6,10 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   ssr: false,
   css: ["@/assets/app.css", "gridstack/dist/gridstack.min.css"],
+
   vite: {
     plugins: [tailwindcss() as any],
   },
+
+  modules: ["@pinia/nuxt"],
 });

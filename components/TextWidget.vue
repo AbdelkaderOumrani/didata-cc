@@ -1,0 +1,1 @@
+<template>Text Widget</template>
