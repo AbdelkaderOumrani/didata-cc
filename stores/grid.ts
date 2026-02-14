@@ -20,7 +20,8 @@ export const useGridStore = defineStore("grid", () => {
       x: 0,
       y: 0,
       width: 4,
-      height: 1,
+      height: 3,
+      version: 0,
     };
     switch (widgetType) {
       case WidgetType.TEXT:
@@ -54,7 +55,11 @@ export const useGridStore = defineStore("grid", () => {
     if (index === -1) return;
     history.value.push([...widgets.value]);
     future.value = [];
-    widgets.value[index] = { ...widgets.value[index], ...data };
+    widgets.value[index] = {
+      ...widgets.value[index],
+      ...data,
+      version: (widgets.value[index].version || 0) + 1,
+    };
   };
 
   const removeWidget = (id: string) => {
@@ -83,8 +88,10 @@ export const useGridStore = defineStore("grid", () => {
     future,
     addWidget,
     removeWidget,
+    updateWidget,
     undo,
     redo,
-    updateWidget,
+    canUndo,
+    canRedo,
   };
 });

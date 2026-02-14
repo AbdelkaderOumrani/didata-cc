@@ -28,8 +28,12 @@ const store = useGridStore();
           </button>
         </div>
         <div class="actions ms-auto">
-          <button class="btn">Login</button>
-          <button class="btn">Sign Up</button>
+          <button class="btn btn-soft" @click="store.undo" :disabled="!store.canUndo">
+            Undo
+          </button>
+          <button class="btn btn-soft" @click="store.redo" :disabled="!store.canRedo">
+            Redo
+          </button>
         </div>
       </header>
       <main class="main-content">

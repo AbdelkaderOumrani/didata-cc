@@ -117,7 +117,7 @@ watch(
   <div ref="gridEl" class="grid-stack">
     <div
       v-for="widget in store.widgets"
-      :key="widget.id"
+      :key="widget.id + '_v' + widget.version"
       class="grid-stack-item"
       :gs-id="widget.id"
       :gs-x="widget.x"
