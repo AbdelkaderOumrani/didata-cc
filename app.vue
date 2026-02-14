@@ -4,43 +4,46 @@ const store = useGridStore();
 </script>
 
 <template>
-  <ClientOnly>
-    <div class="app-layout">
-      <header class="toolbar">
-        <div class="actions">
-          <button
-            class="btn btn-primary btn-plus"
-            @click="store.addWidget(WidgetType.TEXT)"
-          >
-            Text
-          </button>
-          <button
-            class="btn btn-accent btn-plus"
-            @click="store.addWidget(WidgetType.IMAGE)"
-          >
-            Image
-          </button>
-          <button
-            class="btn btn-plus"
-            @click="store.addWidget(WidgetType.LINK)"
-          >
-            Link
-          </button>
-        </div>
-        <div class="actions ms-auto">
-          <button class="btn btn-soft" @click="store.undo" :disabled="!store.canUndo">
-            Undo
-          </button>
-          <button class="btn btn-soft" @click="store.redo" :disabled="!store.canRedo">
-            Redo
-          </button>
-        </div>
-      </header>
-      <main class="main-content">
-        <DashboardGrid />
-      </main>
-    </div>
-  </ClientOnly>
+  <div class="app-layout">
+    <header class="toolbar">
+      <div class="actions">
+        <button
+          class="btn btn-primary btn-plus"
+          @click="store.addWidget(WidgetType.TEXT)"
+        >
+          Text
+        </button>
+        <button
+          class="btn btn-accent btn-plus"
+          @click="store.addWidget(WidgetType.IMAGE)"
+        >
+          Image
+        </button>
+        <button class="btn btn-plus" @click="store.addWidget(WidgetType.LINK)">
+          Link
+        </button>
+      </div>
+      <div class="actions ms-auto">
+        <button
+          class="btn btn-soft"
+          @click="store.undo"
+          :disabled="!store.canUndo"
+        >
+          Undo
+        </button>
+        <button
+          class="btn btn-soft"
+          @click="store.redo"
+          :disabled="!store.canRedo"
+        >
+          Redo
+        </button>
+      </div>
+    </header>
+    <main class="main-content">
+      <DashboardGrid />
+    </main>
+  </div>
 </template>
 
 <style scoped>

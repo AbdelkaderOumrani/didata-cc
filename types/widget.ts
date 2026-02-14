@@ -10,7 +10,6 @@ export interface WidgetBase {
   y: number;
   width: number;
   height: number;
-  version?: number;
 }
 
 export interface TextWidget extends WidgetBase {
@@ -32,15 +31,9 @@ export interface ImageWidget extends WidgetBase {
 
 export type Widget = TextWidget | LinkWidget | ImageWidget;
 
-export type TextWidgetUpdate = Partial<
-  Omit<TextWidget, "id" | "type" | "version">
->;
-export type LinkWidgetUpdate = Partial<
-  Omit<LinkWidget, "id" | "type" | "version">
->;
-export type ImageWidgetUpdate = Partial<
-  Omit<ImageWidget, "id" | "type" | "version">
->;
+export type TextWidgetUpdate = Partial<Omit<TextWidget, "id" | "type">>;
+export type LinkWidgetUpdate = Partial<Omit<LinkWidget, "id" | "type">>;
+export type ImageWidgetUpdate = Partial<Omit<ImageWidget, "id" | "type">>;
 
 export type WidgetUpdate =
   | TextWidgetUpdate

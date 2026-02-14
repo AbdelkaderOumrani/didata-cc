@@ -21,7 +21,6 @@ export const useGridStore = defineStore("grid", () => {
       y: 0,
       width: 4,
       height: 3,
-      version: 0,
     };
     switch (widgetType) {
       case WidgetType.TEXT:
@@ -48,6 +47,8 @@ export const useGridStore = defineStore("grid", () => {
         });
         break;
     }
+    history.value.push([...widgets.value]);
+    future.value = [];
   };
 
   const updateWidget = (id: string, data: WidgetUpdate) => {
@@ -58,7 +59,6 @@ export const useGridStore = defineStore("grid", () => {
     widgets.value[index] = {
       ...widgets.value[index],
       ...data,
-      version: (widgets.value[index].version || 0) + 1,
     };
   };
 
@@ -69,17 +69,19 @@ export const useGridStore = defineStore("grid", () => {
   };
 
   const undo = () => {
-    if (history.value.length > 0) {
-      future.value.push([...widgets.value]);
-      widgets.value = history.value.pop()!;
-    }
+    if (history.value.length === 0) return;
+    const previous = history.value.pop();
+    if (!previous) return;
+    future.value.push([...widgets.value]);
+    widgets.value = previous;
   };
 
   const redo = () => {
-    if (future.value.length > 0) {
-      history.value.push([...widgets.value]);
-      widgets.value = future.value.pop()!;
-    }
+    if (future.value.length === 0) return;
+    const next = future.value.pop();
+    if (!next) return;
+    history.value.push([...widgets.value]);
+    widgets.value = next;
   };
 
   return {
