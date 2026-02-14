@@ -28,5 +28,6 @@ const updateWidget = (updatedFields: WidgetUpdate) => {
   <ImageWidget
     v-else-if="props.widget.type === WidgetType.IMAGE"
     :widget="props.widget"
+    @update:widget="updateWidget"
   />
 </template>

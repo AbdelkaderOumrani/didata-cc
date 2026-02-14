@@ -27,7 +27,7 @@ export interface LinkWidget extends WidgetBase {
 export interface ImageWidget extends WidgetBase {
   type: WidgetType.IMAGE;
   imageUrl: string;
-  altText: string;
+  altText?: string;
 }
 
 export type Widget = TextWidget | LinkWidget | ImageWidget;

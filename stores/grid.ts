@@ -44,7 +44,7 @@ export const useGridStore = defineStore("grid", () => {
           ...base,
           type: WidgetType.IMAGE,
           altText: "New Image Widget",
-          imageUrl: "https://via.placeholder.com/150",
+          imageUrl: "https://placehold.co/150",
         });
         break;
     }
