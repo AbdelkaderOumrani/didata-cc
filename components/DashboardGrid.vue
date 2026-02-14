@@ -67,7 +67,7 @@ onMounted(async () => {
       float: false,
       minRow: 1,
       draggable: {
-        handle: ".card-header",
+        handle: ".drag-btn",
       },
       resizable: {
         handles: "se",
@@ -85,8 +85,6 @@ onMounted(async () => {
   });
 
   grid.on("dragstop", (event, el) => {
-    console.log(el);
-    console.log(el?.gridstackNode);
     isInteracting.value = false;
     syncStoreFromElement(el as HTMLElement | null);
   });
@@ -117,7 +115,7 @@ watch(
   <div ref="gridEl" class="grid-stack">
     <div
       v-for="widget in store.widgets"
-      :key="widget.id + '_v' + widget.version"
+      :key="widget.id"
       class="grid-stack-item"
       :gs-id="widget.id"
       :gs-x="widget.x"

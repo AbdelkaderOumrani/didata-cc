@@ -29,6 +29,7 @@ const cancel = () => {
 
 <template>
   <div class="card p-2 gap-4">
+    <DragButton class="absolute" />
     <div class="flex justify-end gap-1">
       <button
         v-if="isEditing"
