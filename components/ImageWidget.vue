@@ -14,6 +14,8 @@ const url = ref(props.widget.imageUrl);
 const alt = ref(props.widget.altText);
 
 const edit = () => {
+  url.value = props.widget.imageUrl;
+  alt.value = props.widget.altText;
   isEditing.value = true;
 };
 
@@ -79,7 +81,11 @@ const cancel = () => {
       </div>
     </div>
     <div v-else class="flex-1 overflow-hidden rounded">
-      <img :src="url" :alt="alt" class="w-full h-full object-cover" />
+      <img
+        :src="props.widget.imageUrl"
+        :alt="props.widget.altText"
+        class="w-full h-full object-cover"
+      />
     </div>
   </div>
 </template>

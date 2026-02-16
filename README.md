@@ -117,7 +117,7 @@ This project builds to a standard static output, which can be deployed to any st
 ## Known Issues
 
 - **History Redundancy**: Unnecessary actions, such as auto-positioning, are currently saved to the history stack. This can obscure user actions and sometimes records a single event as two separate history entries.
-- **Undo/Redo Reliability**: Occasionally, performing an undo or redo action does not immediately update the rendered content on the dashboard.
+- ~~**Undo/Redo Reliability**: Occasionally, performing an undo or redo action does not immediately update the rendered content on the dashboard.~~
 
 ## Future Improvements
 

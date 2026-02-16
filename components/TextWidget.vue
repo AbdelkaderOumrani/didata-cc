@@ -13,6 +13,7 @@ const isEditing = ref(false);
 const content = ref(props.widget.content);
 
 const edit = () => {
+  content.value = props.widget.content;
   isEditing.value = true;
 };
 
@@ -56,7 +57,7 @@ const cancel = () => {
         class="textarea h-full"
         v-model="content"
       ></textarea>
-      <p v-else>{{ content }}</p>
+      <p v-else>{{ props.widget.content }}</p>
     </div>
   </div>
 </template>

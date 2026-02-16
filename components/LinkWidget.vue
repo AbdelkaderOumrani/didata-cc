@@ -19,6 +19,8 @@ const link = ref(props.widget.url);
 const label = ref(props.widget.label);
 
 const edit = () => {
+  link.value = props.widget.url;
+  label.value = props.widget.label;
   isEditing.value = true;
 };
 
@@ -56,11 +58,7 @@ const cancel = () => {
       >
         Save
       </button>
-      <button
-        v-if="!isEditing"
-        class="btn btn-soft btn-xs"
-        @click="edit"
-      >
+      <button v-if="!isEditing" class="btn btn-soft btn-xs" @click="edit">
         Edit
       </button>
     </div>
